@@ -6,6 +6,10 @@ on:
 
 jobs:
   docker:
+    continue-on-error: true
+    strategy:
+      matrix:
+        tag: ['32', '33', '34', 'rawhide']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout out code
@@ -13,5 +17,6 @@ jobs:
       - name: Build Docker image
         uses: docker/build-push-action@v1
         with:
-          dockerfile: Dockerfile 
+          dockerfile: Dockerfile
+          build_args: TAG=${{ matrix.tag }}
           push: false 
