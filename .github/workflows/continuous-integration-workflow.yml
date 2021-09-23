@@ -14,6 +14,13 @@ jobs:
     steps:
       - name: Checkout out code
         uses: actions/checkout@v2
+      # See https://bugzilla.redhat.com/show_bug.cgi?id=1988199#c3 for more information
+      - name: Download Docker with patched seccomp
+        run: |
+          sudo systemctl stop docker containerd
+          sudo apt-get remove --autoremove -y moby-engine moby-cli moby-buildx moby-containerd moby-runc
+          sudo add-apt-repository -y ppa:pascallj/docker.io-clone3
+          sudo apt-get install -y docker.io
       - name: Build Docker image
         uses: docker/build-push-action@v1
         with:
