@@ -17,5 +17,6 @@ RUN printf "#include <vector>\nint main (){\n std::vector<int> foo (3,100);\n st
 RUN icpc -g -std=c++14 test.cpp
 
 RUN git clone https://github.com/kokkos/kokkos
-RUN cmake -B kokkos/build -DCMAKE_CXX_COMPILER=icpc
-RUN cmake --build kokkos/build
+WORKDIR kokkos
+RUN cmake -B build -DCMAKE_CXX_COMPILER=icpc
+RUN cmake --build build
