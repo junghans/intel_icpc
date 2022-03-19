@@ -9,7 +9,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        tag: ['32', '33', '34', '35', 'rawhide']
+        tag: ['34', '35', 'rawhide']
     runs-on: ubuntu-latest
     steps:
       - name: Checkout out code
