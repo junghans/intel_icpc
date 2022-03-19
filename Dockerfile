@@ -12,7 +12,7 @@ RUN echo '%wheel ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER user
 #ENV PATH=/opt/intel/oneapi/compiler/latest/linux/bin:/opt/intel/oneapi/compiler/latest/linux/bin/intel64${PATH:+:}${PATH}
 #ENV LD_LIBRARY_PATH=/opt/intel/oneapi/compiler/latest/linux/compiler/lib/intel64:/opt/intel/oneapi/mkl/latest/lib/intel64${LD_LIBRARY_PATH:+:}${LD_LIBRARY_PATH}
-#WORKDIR /home/user
+WORKDIR /home/user
 #RUN printf "#include <vector>\nint main (){\n std::vector<int> foo (3,100);\n std::vector<int> bar;\n foo.swap(bar); return 0; }" > test.cpp
 #RUN icpc -g -std=c++14 test.cpp
 
