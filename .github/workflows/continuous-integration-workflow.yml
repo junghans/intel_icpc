@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+      - test_flang
 
 jobs:
   docker:
